@@ -1,6 +1,7 @@
 // Utilidade de usar index.js :: sempre que importa uma pasta, este arquivo é procurado
 import React from 'react';
-import { FiLogIn } from 'react-icons/fi'; // react-icons = Module instalado, fi = feather icons
+import { Link } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi'; // react-icons = Module instalado, fi = feather icons
 
 import "./styles.css";
 
@@ -19,10 +20,11 @@ function Logon() {
                     <input placeholder="sua ID" />
                     <button className="button" type="submit">Entrar</button>
 
-                    <a href="/register">
-                        <FiLogIn size={16} color="#E02041" />
+                    {/* Diferente da tag a, Link não recarrega a página */}
+                    <Link className="back-link" to="/register">
+                        <FiArrowLeft size={16} color="#E02041" />
                         Não tenho cadastro
-                    </a>
+                    </Link>
                 </form>
             </section>
 
