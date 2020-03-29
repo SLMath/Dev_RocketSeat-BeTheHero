@@ -1,8 +1,8 @@
 
-exports.up = function(knex) {
+exports.up = function (knex) {
     // Cria Tabela!
     return knex.schema.createTable('incidents', (table) => {
-        table.increments();// para o primary, simplesmente numerando em ordem automaticamente
+        table.increments('id');// para o primary, simplesmente numerando em ordem automaticamente
 
         table.string('title').notNullable();
         table.string('description').notNullable();
@@ -14,7 +14,7 @@ exports.up = function(knex) {
     });
 };
 
-exports.down = function(knex) {
+exports.down = function (knex) {
     // Desfazer Tabela!
     return knex.schema.dropTable('incidents');
 };
