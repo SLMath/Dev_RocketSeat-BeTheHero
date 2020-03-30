@@ -1,17 +1,16 @@
-const crypto  = require('crypto');
-
 const db_connection = require('../database/connection');
+const generateUniqueId = require('../utils/generateUniqueId');
 
 const index = async (request, response) => {
     const ongs = await db_connection('ongs').select('*');
 
-    return response.json( ongs );
+    return response.json(ongs);
 };
 
 const create = async (request, response) => {
     const { name, email, whatsapp, city, uf } = request.body;
 
-    const id = crypto.randomBytes(4).toString('HEX'); // Gerar ID aleatório
+    const id = generateUniqueId();
 
     await db_connection('ongs').insert({
         id,
@@ -22,8 +21,8 @@ const create = async (request, response) => {
         uf
     });
 
-    return response.json({ 
-        id 
+    return response.json({
+        id
     });
 };
 
